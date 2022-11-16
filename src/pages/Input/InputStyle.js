@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const IOPageStyle = styled.main`
+export const InputStyle = styled.main`
   display: flex;
   justify-content: center;
   height: 100vh;

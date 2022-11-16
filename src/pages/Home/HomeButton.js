@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Button } from '../../components/Button';
 
-export default function HomeButton({img, text}) {
+export default function HomeButton({img, text, onClick}) {
   return (
-    <Style>
+    <Style onClick={onClick}>
       <img src={img} alt="" />
       <p>{text}</p>
     </Style>
