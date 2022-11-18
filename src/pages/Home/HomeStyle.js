@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colorGreen, colorRed } from '../../constants/colors';
 
 export const HomeStyle = styled.main`
   display: flex;
@@ -34,46 +33,6 @@ export const HomeStyle = styled.main`
     width: 24px;
     height: 24px;
     cursor: pointer;
-  }
-  
-  main {
-    border-radius: 5px;
-    background-color: white;
-    width: 100%;
-    height: 100%;
-    margin-bottom: 12px;
-    overflow-y: hidden;
-    padding: 16px 0;
-    
-    .statements {
-      padding: 0 16px;
-      display: flex;
-      flex-direction: column;
-      height: calc(100% - 26px);
-      overflow-y: scroll;
-      gap: 16px;
-    }
-
-    .balance {
-      padding: 12px 16px;
-      display: flex;
-      justify-content: space-between;
-      font-family: 'Raleway', sans-serif;
-      font-size: 16px;
-      font-weight: bold;
-
-      .text {
-        color: black;
-      }
-
-      .green {
-        color: ${colorGreen};
-      }
-
-      .red {
-        color: ${colorRed};
-      }
-    }
   }
 
   footer {

@@ -10,7 +10,7 @@ export default function Input({user, inputData, setInputData}) {
   const navigate = useNavigate();
   const { type } = useParams();
 
-  const [value, desc] = inputData;
+  const [value, desc, id] = inputData;
   const [inputValue, setValue] = useState(value ? value : "");
   const [inputDesc, setDesc] = useState(desc ? desc : "");
   
@@ -44,7 +44,7 @@ export default function Input({user, inputData, setInputData}) {
         .catch(e => alert(e.response.data?.message));
       break;
       case "edit-income": case "edit-outcome":
-        axios.put(url.statement, data, {headers})
+        axios.put(url.statementEdit(id), data, {headers})
         .then(() => navigate("/"))
         .catch(e => alert(e.response.data?.message));
       break;

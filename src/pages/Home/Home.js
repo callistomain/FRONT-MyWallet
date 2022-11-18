@@ -3,26 +3,24 @@ import exitIcon from "../../assets/exit.png";
 import plusIcon from "../../assets/plus.png";
 import minusIcon from "../../assets/minus.png";
 import HomeButton from "./HomeButton";
-import HomeData from "./HomeData";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { url } from "../../constants/urls";
-import { nfComplete } from "../../constants/format";
+import HomeMain from "./HomeMain";
 
 export default function Home({user, setInputData, setUser}) {
   const navigate = useNavigate();
   const [statement, setStatement] = useState([]);
+  const [update, setHomeUpdate] = useState(false);
 
   useEffect(() => {
     const headers = {Authorization: "Bearer " + user.token};
     axios.get(url.statement, {headers})
     .then(r => setStatement(r.data))
     .catch(e => alert(e.response.data?.message));
-  }, [user.token])
-
-  const total = statement.reduce((v, e) => v + (e.type === "income" ? +e.value : -e.value), 0);
-  const color = (total >= 0) ? "green" : "red";
+    setInputData([]);
+  }, [user.token, update, setInputData])
 
   function logoutHandler() {
     const headers = {Authorization: "Bearer " + user.token};
@@ -44,15 +42,7 @@ export default function Home({user, setInputData, setUser}) {
           <img src={exitIcon} alt="" onClick={logoutHandler}/>
         </header>
 
-        <main>
-          <div className="statements">
-            {statement.map(e => <HomeData key={e._id} data={e}/>)}
-          </div>
-          <div className="balance">
-            <p className="text">SALDO</p>
-            <p className={color}>{nfComplete.format(total)}</p>
-          </div>
-        </main>
+        <HomeMain statement={statement} user={user} setHomeUpdate={setHomeUpdate} setInputData={setInputData}/>
 
         <footer>
           <HomeButton img={plusIcon} text="Nova entrada" onClick={() => navigate("/input/income")}/>

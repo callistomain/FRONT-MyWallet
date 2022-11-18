@@ -1,16 +1,39 @@
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { colorGray, colorGreen, colorRed } from '../../constants/colors';
-import { nfSimple } from '../../constants/format';
+import { numberFormat } from '../../constants/format';
+import { url } from '../../constants/urls';
 
-export default function HomeData({data}) {
-  const {type, date, desc, value} = data;
+export default function HomeData({data, user, setHomeUpdate, setInputData}) {
+  const {_id, type, date, desc, value} = data;
+  const navigate = useNavigate();
+
+  function delHandler() {
+    const headers = {Authorization: "Bearer " + user.token};
+    axios.delete(url.statementDelete(_id), {headers})
+    .then(() => setHomeUpdate((home) => !home))
+    .catch(e => alert(e.response.data?.message));
+  }
+
+  function editHandler() {
+    navigate("/input/edit-" + type);
+    setInputData([value, desc, _id]);
+    /*
+    const headers = {Authorization: "Bearer " + user.token};
+    axios.put(url.statementDelete(_id), {headers})
+    .then(() => setHomeUpdate((home) => !home))
+    .catch(e => alert(e.response.data?.message));*/
+  }
+
   return (
     <Style type={type}>
       <h3>{date}</h3>
       <div>
-        <h2>{desc}</h2>
-        <h1>{nfSimple.format(value)}</h1>
+        <h2 onClick={editHandler}>{desc}</h2>
+        <h1>{numberFormat.format(value).replace("R$", "")}</h1>
       </div>
+      <div className="del" onClick={delHandler}>x</div>
     </Style>
   );
 }
@@ -40,5 +63,10 @@ export const Style = styled.div`
         props.type === "income" ? colorGreen : colorRed
       };
     }
+  }
+
+  .del {
+    width: fit-content;
+    color: ${colorGray};
   }
 `;
