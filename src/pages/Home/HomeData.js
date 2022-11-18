@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colorGray, colorGreen, colorRed } from '../../constants/colors';
+import { nfSimple } from '../../constants/format';
 
 export default function HomeData({data}) {
   const {type, date, desc, value} = data;
@@ -8,7 +9,7 @@ export default function HomeData({data}) {
       <h3>{date}</h3>
       <div>
         <h2>{desc}</h2>
-        <h1>{value}</h1>
+        <h1>{nfSimple.format(value)}</h1>
       </div>
     </Style>
   );

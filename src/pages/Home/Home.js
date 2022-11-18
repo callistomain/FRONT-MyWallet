@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { url } from "../../constants/urls";
+import { nfComplete } from "../../constants/format";
 
 export default function Home({user, setInputData, setUser}) {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ export default function Home({user, setInputData, setUser}) {
           </div>
           <div className="balance">
             <p className="text">SALDO</p>
-            <p className={color}>{total}</p>
+            <p className={color}>{nfComplete.format(total)}</p>
           </div>
         </main>
 
