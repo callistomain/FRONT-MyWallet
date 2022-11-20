@@ -32,7 +32,7 @@ export default function SignUp() {
         <InputText type="email" name="email" id="email" placeholder="E-mail" required/>
         <InputText type="password" name="password" id="password" placeholder="Senha" required/>
         <InputText type="password" name="pwconfirm" id="pwconfirm" placeholder="Confirme a senha" required/>
-        <Button>Entrar</Button>
+        <Button>Cadastrar</Button>
       </form>
       <Link to="/login">Já tem uma conta? Entre agora!</Link>
     </SignUpStyle>

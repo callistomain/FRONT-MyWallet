@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/";
+const BASE_URL = "https://mywallet-api-7ypa.onrender.com/";
 
 export const url = {
   signUp:     BASE_URL + "sign-up",

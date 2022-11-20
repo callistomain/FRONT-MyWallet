@@ -56,6 +56,7 @@ export const Style = styled.div`
 
     h2 {
       color: black;
+      cursor: pointer;
     }
 
     h1 {
@@ -68,5 +69,6 @@ export const Style = styled.div`
   .del {
     width: fit-content;
     color: ${colorGray};
+    cursor: pointer;
   }
 `;
