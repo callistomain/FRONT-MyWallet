@@ -18,7 +18,7 @@ export default function Login({setUser}) {
 
     axios.post(url.login, obj)
     .then(r => {
-      localStorage.setItem("user", JSON.stringify(r.data));
+      localStorage.setItem("userMyWallet", JSON.stringify(r.data));
       setUser(r.data);
       navigate("/");
     })

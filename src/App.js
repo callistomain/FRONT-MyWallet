@@ -7,10 +7,9 @@ import Input from "./pages/Input/Input";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import { useState } from "react";
 
+const localUser = JSON.parse(localStorage.getItem("userMyWallet"));
 export default function App() {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("user"))
-  );
+  const [user, setUser] = useState(localUser);
   const [inputData, setInputData] = useState([]);
 
   return (
